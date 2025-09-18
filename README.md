@@ -155,13 +155,21 @@ streamlit run app.py
 
 ## 🌐 Deploying with Ngrok (Local Preview)
 
-A simple deployment recipe is included at `deployment/ngrok_setup.txt`.
+A simple deployment recipe is included at deployment/ngrok_setup.txt.
 
 Typical steps:
 
-1. Run the Streamlit app: `streamlit run ui/app.py`.
-2. In a new terminal, run `ngrok http 8501` (Streamlit default port is `8501`).
-3. Use the provided public URL from ngrok to share the running app temporarily.
+Run the Streamlit app: streamlit run ui/app.py
+
+In a new terminal, run: ngrok http 8501 (Streamlit default port is 8501).
+
+Ngrok will generate a temporary public URL, for example (your session may differ):
+
+https://ae564b4f5524.ngrok-free.app/
+
+Share that generated URL to access the app remotely from any browser.
+
+**⚠️ Note:** Each time you restart ngrok, a new URL will be generated.
 
 **Security note:** Ngrok exposes a tunnel to your local machine. Do not expose sensitive data or credentials. Use ngrok for demo/testing only.
 
@@ -197,8 +205,6 @@ This prevents mismatch between training preprocessing and runtime inputs.
 
 * Evaluation metrics and detailed model comparison are stored in `results/evaluation_metrics.txt` and also printed in notebooks.
 * The notebooks include ROC curves, confusion matrices, precision/recall/F1, and cluster comparison tables.
-
-If you plan to present results, export figures from the notebooks as PNG or PDF and include them in a `docs/` folder.
 
 ---
 
@@ -242,16 +248,6 @@ joblib==1.3.2
 cloudpickle==2.2.1
 pickle5==0.0.12
 ```
-
-## 🧑‍💻 Contribution
-
-Contributions and improvements are welcome. Suggested workflow:
-
-1. Fork repository
-2. Create a feature branch
-3. Submit a pull request with clear descriptions and tests (if any)
-
----
 
 ## FAQ (Short)
 
