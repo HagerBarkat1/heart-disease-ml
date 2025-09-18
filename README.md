@@ -93,7 +93,7 @@ pip install pandas numpy scikit-learn matplotlib seaborn streamlit imbalanced-le
 ## 🗂 Data
 
 **Source:** UCI Heart Disease Dataset
-(Original link: `https://archive.ics.uci.edu/ml/datasets/heart+Disease`)
+(Original link: `https://archive.ics.uci.edu/dataset/45/heart+disease`)
 Place the cleaned or original CSV file in `data/heart_disease.csv`.
 
 **Note on provided data:** The notebooks expect a file path `/content/processed.cleveland.data` in the notebooks — if you're running locally, confirm that `data/heart_disease.csv` or `processed.cleveland.data` exists and update the path in the notebook(s) accordingly.
