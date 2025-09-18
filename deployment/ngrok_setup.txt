@@ -1,0 +1,78 @@
+===========================
+Ngrok setup — Official / Recommended (for Streamlit)
+===========================
+
+1) Prerequisites
+   - Python & Streamlit installed and your app file present (e.g. app.py).
+   - ngrok agent downloaded & installed for your OS. (See: https://ngrok.com/docs/getting-started/)
+   - An ngrok account (free or paid). You will need the authtoken from your ngrok dashboard.
+
+2) Typical Streamlit defaults
+   - Streamlit runs by default on port 8501. If you change the port, update the ngrok command/config accordingly. :contentReference[oaicite:1]{index=1}
+
+3) Authenticate ngrok (one-time)
+   - Sign in to your ngrok dashboard → "Get Started" → copy your authtoken.
+   - From a terminal run (recommended - official CLI command):
+     ```
+     ngrok config add-authtoken <YOUR_NGROK_AUTHTOKEN>
+     ```
+     This stores the token in ngrok's config so you can start tunnels without passing token each time. :contentReference[oaicite:2]{index=2}
+
+4) Simple quickstart (recommended for ad-hoc sharing)
+   - In one terminal: start your Streamlit app (headless recommended for server use):
+     ```
+     streamlit run app.py --server.port 8501 --server.headless true
+     ```
+   - In another terminal: start ngrok to expose port 8501:
+     ```
+     ngrok http 8501
+     ```
+   - ngrok will print the public HTTPS and HTTP URLs (e.g. https://xxxxx.ngrok.app). Use the HTTPS URL to share. :contentReference[oaicite:3]{index=3}
+
+5) Using an ngrok config file (recommended for repeatable setups)
+   - Create (or edit) ngrok config file (example `~/.ngrok2/ngrok.yml` for many installs or use `ngrok config edit`):
+     Example config (agent config v3 style):
+     ```yaml
+     # ngrok config (example)
+     version: "3"
+     agent:
+       authtoken: "<YOUR_NGROK_AUTHTOKEN>"
+
+     tunnels:
+       streamlit:
+         proto: http
+         addr: 127.0.0.1:8501
+         # hostname or subdomain require paid plans — leave commented unless you have the plan
+         # hostname: yoursubdomain.ngrok.app
+     ```
+     - Then run:
+       ```
+       ngrok start --all
+       ```
+       or to start only the named tunnel:
+       ```
+       ngrok start streamlit
+       ```
+     - Notes: binding custom hostnames/subdomains or multiple concurrent reserved hostnames may require a paid ngrok plan. :contentReference[oaicite:4]{index=4}
+
+6) Security & best-practices (official guidance)
+   - Do not expose sensitive data — ngrok makes a public endpoint to your local service.
+   - If you need access restrictions, configure ngrok access controls (via dashboard or config) or require authentication at the app level. Paid plans give more control over custom domains, ACLs, and IP restrictions. :contentReference[oaicite:5]{index=5}
+
+7) Troubleshooting quick checklist
+   - If ngrok shows a tunnel but the browser returns connection refused:
+     - Make sure your Streamlit app is actually running on the port you exposed (127.0.0.1:8501).
+     - Check for local firewall or port conflicts. (Common cause: no service listening on the port.) :contentReference[oaicite:6]{index=6}
+   - If you need the public URL to persist (custom subdomain / domain), you must configure reserved domains in ngrok dashboard (paid feature).
+   - Use `ngrok logs` / dashboard "Inspect" to see requests and debug.
+
+8) Example quick command sequence (copy-paste)
+   ```bash
+   # 1) authenticate (one time)
+   ngrok config add-authtoken <YOUR_NGROK_AUTHTOKEN>
+
+   # 2) run streamlit (in project folder)
+   streamlit run app.py --server.port 8501 --server.headless true
+
+   # 3) open a new terminal to create the tunnel
+   ngrok http 8501
