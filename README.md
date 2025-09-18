@@ -227,29 +227,21 @@ If you plan to present results, export figures from the notebooks as PNG or PDF 
 
 ---
 
-## 🧾 Requirements (example `requirements.txt`)
+## 🧾 Requirements (`requirements.txt`)
 
 ```
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-streamlit
-imbalanced-learn
-joblib
-pickle-mixin
+numpy==1.25.0
+pandas==2.2.2
+scikit-learn==1.3.2
+imbalanced-learn==0.11.0
+matplotlib==3.8.1
+seaborn==0.12.2
+scipy==1.11.1
+streamlit==1.24.0
+joblib==1.3.2
+cloudpickle==2.2.1
+pickle5==0.0.12
 ```
-
-Adjust versions as needed (pin versions for reproducibility, e.g. `scikit-learn==1.2.2`).
-
----
-
-## 📜 License
-
-Add a `LICENSE` file as appropriate. For academic/demo projects, consider `MIT License` for permissive reuse.
-
----
 
 ## 🧑‍💻 Contribution
 
@@ -261,31 +253,15 @@ Contributions and improvements are welcome. Suggested workflow:
 
 ---
 
-## 📬 Contact
-
-If you have questions or want collaboration, add your contact details here (email, LinkedIn).
-
----
-
 ## FAQ (Short)
 
 **Q: Is this app clinically validated?**
+
 A: No. This is a demo/educational project only. Do not use for real medical decisions.
 
 **Q: How to extend to other datasets?**
+
 A: Replace `data/heart_disease.csv`, re-run preprocessing and feature-selection notebooks, retrain models, and export a new `final_model.pkl`.
 
 ---
 
-## ✨ Final Notes (Best Practices)
-
-* For productionize-ready systems, wrap preprocessing + prediction in a single serialized artifact (Pipeline), add unit tests, logging, and input validation.
-* Keep sensitive patient data out of public repositories. Use synthetic or anonymized samples for demos.
-
----
-
-*If you want, I can also:*
-
-* Generate a compact `README` badge header and a short project poster.
-* Produce a `requirements.txt` with exact pinned versions based on your environment.
-* Convert this README to Arabic or another language.
