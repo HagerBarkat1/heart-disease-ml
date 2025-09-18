@@ -1,8 +1,11 @@
 # 💓 Heart Disease Prediction — Comprehensive ML Pipeline
 
 **Project:** Heart\_Disease\_Project
+
 **Author:** Hager Mahmoud Barkat — SprintUP Graduation Project
+
 **Language:** English
+
 **Status:** Complete — Notebooks, model, Streamlit UI, and deployment notes included
 
 ---
